@@ -26,7 +26,7 @@ AppRegistry.registerComponent('BackgroundService', () => App);
 // Call the startBackgroundTask function
 /*
 NativeModules.BackgroundService.startBackgroundTask(
-  'MyLongRunningTask', // Replace with your task name
+  'MyLongRunningTask', // task name registered in Xcode
   result => {
     // Handle success
     console.log(`Started background task: ${result}`);
