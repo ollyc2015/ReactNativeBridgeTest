@@ -18,6 +18,8 @@
 		DD0C372B2ABDD21C00E0B247 /* MessageModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0C372A2ABDD21C00E0B247 /* MessageModule.m */; };
 		DD0C372D2ABDDCF500E0B247 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C372C2ABDDCF500E0B247 /* Emitter.swift */; };
 		DD0C372F2ABDE69000E0B247 /* EmitterModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0C372E2ABDE69000E0B247 /* EmitterModule.m */; };
+		DD0C374B2ABF4A4300E0B247 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C374A2ABF4A4300E0B247 /* BackgroundService.swift */; };
+		DD0C374D2ABF4A9D00E0B247 /* BackgroundServiceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0C374C2ABF4A9D00E0B247 /* BackgroundServiceModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,9 @@
 		DD0C372A2ABDD21C00E0B247 /* MessageModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModule.m; sourceTree = "<group>"; };
 		DD0C372C2ABDDCF500E0B247 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		DD0C372E2ABDE69000E0B247 /* EmitterModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmitterModule.m; sourceTree = "<group>"; };
+		DD0C37492ABF456B00E0B247 /* BackgroundServiceExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BackgroundServiceExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD0C374A2ABF4A4300E0B247 /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
+		DD0C374C2ABF4A9D00E0B247 /* BackgroundServiceModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundServiceModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -95,17 +100,14 @@
 		13B07FAE1A68108700A75B9A /* ReactNativeBridgeIos */ = {
 			isa = PBXGroup;
 			children = (
+				DD0C374E2ABF502200E0B247 /* BackgroundServiceExperiments */,
+				DD0C37432ABF3BFD00E0B247 /* SimpleExperiments */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				DD0C37272ABDD1CF00E0B247 /* linktest-Bridging-Header.h */,
-				DD0C37282ABDD1F100E0B247 /* Message.swift */,
-				DD0C372A2ABDD21C00E0B247 /* MessageModule.m */,
-				DD0C372C2ABDDCF500E0B247 /* Emitter.swift */,
-				DD0C372E2ABDE69000E0B247 /* EmitterModule.m */,
 			);
 			name = ReactNativeBridgeIos;
 			sourceTree = "<group>";
@@ -160,6 +162,28 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-ReactNativeBridgeIos-ReactNativeBridgeIosTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DD0C37432ABF3BFD00E0B247 /* SimpleExperiments */ = {
+			isa = PBXGroup;
+			children = (
+				DD0C372C2ABDDCF500E0B247 /* Emitter.swift */,
+				DD0C372E2ABDE69000E0B247 /* EmitterModule.m */,
+				DD0C37282ABDD1F100E0B247 /* Message.swift */,
+				DD0C372A2ABDD21C00E0B247 /* MessageModule.m */,
+				DD0C37272ABDD1CF00E0B247 /* linktest-Bridging-Header.h */,
+			);
+			path = SimpleExperiments;
+			sourceTree = "<group>";
+		};
+		DD0C374E2ABF502200E0B247 /* BackgroundServiceExperiments */ = {
+			isa = PBXGroup;
+			children = (
+				DD0C37492ABF456B00E0B247 /* BackgroundServiceExample-Bridging-Header.h */,
+				DD0C374A2ABF4A4300E0B247 /* BackgroundService.swift */,
+				DD0C374C2ABF4A9D00E0B247 /* BackgroundServiceModule.m */,
+			);
+			path = BackgroundServiceExperiments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,8 +450,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0C374B2ABF4A4300E0B247 /* BackgroundService.swift in Sources */,
 				DD0C372F2ABDE69000E0B247 /* EmitterModule.m in Sources */,
 				DD0C37292ABDD1F100E0B247 /* Message.swift in Sources */,
+				DD0C374D2ABF4A9D00E0B247 /* BackgroundServiceModule.m in Sources */,
 				DD0C372B2ABDD21C00E0B247 /* MessageModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				DD0C372D2ABDDCF500E0B247 /* Emitter.swift in Sources */,

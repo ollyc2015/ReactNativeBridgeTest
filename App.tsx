@@ -8,6 +8,7 @@ import {
   useColorScheme,
   View,
   AppState,
+  AppRegistry,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NativeModules, NativeEventEmitter} from 'react-native';
@@ -19,6 +20,8 @@ type SectionProps = {
   children: React.ReactNode;
   title: string;
 };
+
+AppRegistry.registerComponent('BackgroundService', () => App);
 
 function Section({children, title}: SectionProps) {
   const isDarkMode = useColorScheme() === 'dark';
