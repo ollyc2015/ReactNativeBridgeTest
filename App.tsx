@@ -23,6 +23,21 @@ type SectionProps = {
 
 AppRegistry.registerComponent('BackgroundService', () => App);
 
+// Call the startBackgroundTask function
+/*
+NativeModules.BackgroundService.startBackgroundTask(
+  'MyLongRunningTask', // Replace with your task name
+  result => {
+    // Handle success
+    console.log(`Started background task: ${result}`);
+  },
+  error => {
+    // Handle error
+    console.error('Error starting background task:', error);
+  },
+);
+*/
+
 function Section({children, title}: SectionProps) {
   const isDarkMode = useColorScheme() === 'dark';
   return (
