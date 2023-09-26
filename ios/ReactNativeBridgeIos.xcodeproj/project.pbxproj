@@ -54,7 +54,7 @@
 		DD0C372A2ABDD21C00E0B247 /* MessageModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModule.m; sourceTree = "<group>"; };
 		DD0C372C2ABDDCF500E0B247 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		DD0C372E2ABDE69000E0B247 /* EmitterModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmitterModule.m; sourceTree = "<group>"; };
-		DD0C37492ABF456B00E0B247 /* BackgroundServiceExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BackgroundServiceExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD0C37492ABF456B00E0B247 /* BackgroundServiceBridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BackgroundServiceBridging-Header.h"; sourceTree = "<group>"; };
 		DD0C374A2ABF4A4300E0B247 /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
 		DD0C374C2ABF4A9D00E0B247 /* BackgroundServiceModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundServiceModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -179,7 +179,7 @@
 		DD0C374E2ABF502200E0B247 /* BackgroundServiceExperiments */ = {
 			isa = PBXGroup;
 			children = (
-				DD0C37492ABF456B00E0B247 /* BackgroundServiceExample-Bridging-Header.h */,
+				DD0C37492ABF456B00E0B247 /* BackgroundServiceBridging-Header.h */,
 				DD0C374A2ABF4A4300E0B247 /* BackgroundService.swift */,
 				DD0C374C2ABF4A9D00E0B247 /* BackgroundServiceModule.m */,
 			);
@@ -238,7 +238,8 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -616,6 +617,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -689,6 +691,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -718,6 +721,7 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
