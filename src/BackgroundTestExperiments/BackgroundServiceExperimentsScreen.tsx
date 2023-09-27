@@ -18,12 +18,6 @@ function BackgroundServiceExperimentsScreen() {
   );
 
   useEffect(() => {
-    const startListening = () => {
-      NativeModules.BackgroundServiceEmitter.emitBackgroundSync(); // Call the Swift function to start listening
-      console.log('Starting to listen');
-    };
-
-    startListening(); // Call it when the component mounts
     // Add an event listener for unread events and update the count
     eventEmitter.addListener('BackgroundProcessingExecuting', event => {
       // Handle the event data, e.g., event.count

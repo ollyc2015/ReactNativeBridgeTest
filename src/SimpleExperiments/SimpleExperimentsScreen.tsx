@@ -5,7 +5,6 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
   AppState,
 } from 'react-native';
@@ -21,14 +20,13 @@ type SectionProps = {
 };
 
 function Section({children, title}: SectionProps) {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
       <Text
         style={[
           styles.sectionTitle,
           {
-            color: isDarkMode ? Colors.white : Colors.black,
+            color: Colors.black,
           },
         ]}>
         {title}
@@ -37,7 +35,7 @@ function Section({children, title}: SectionProps) {
         style={[
           styles.cardContainer,
           {
-            backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+            backgroundColor: Colors.darker,
           },
         ]}>
         {children}
@@ -47,7 +45,6 @@ function Section({children, title}: SectionProps) {
 }
 
 function SimpleExperimentsScreen() {
-  const isDarkMode = useColorScheme() === 'dark';
   const [count, setCount] = useState(0);
   const [emitterCount, setEmitterCount] = useState(0);
   const eventEmitter = new NativeEventEmitter(NativeModules.Emitter);
@@ -99,7 +96,7 @@ function SimpleExperimentsScreen() {
   return (
     <SafeAreaView style={styles.background}>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle={'dark-content'}
         backgroundColor={styles.background.backgroundColor}
       />
       <ScrollView
@@ -152,7 +149,7 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: 16,
     lineHeight: 24,
-    color: Colors.dark,
+    color: Colors.white,
   },
 });
 

@@ -17,7 +17,13 @@ class BackgroundServiceEmitter: RCTEventEmitter {
     return ["BackgroundTaskExpired", "BackgroundProcessingExecuting", "BackgroundProcessingExpired"]
   }
   
+  public static var shared: BackgroundServiceEmitter?
   var executingTasks: [String: BGProcessingTask] = [:]
+  
+  override init() {
+      super.init()
+    BackgroundServiceEmitter.shared = self
+    }
 
   func scheduleBackgroundProcessing(_ taskName: String, timeout: NSNumber, resolver: @escaping RCTPromiseResolveBlock, rejecter: @escaping RCTPromiseRejectBlock) {
     let taskRequest = BGProcessingTaskRequest(identifier: taskName)

@@ -7,6 +7,7 @@
 @implementation AppDelegate
 
 static NSString* uploadTask = @"MyLongRunningTask";
+BackgroundService* backgroundService = [BackgroundService new];
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -24,22 +25,19 @@ static NSString* uploadTask = @"MyLongRunningTask";
 }
 
 - (void)handleBackgroundFetchTask:(BGTask *)task {
-  NSLog(@"Background sync triggered!!");
- // BackgroundService *backgroundService = [[BackgroundService alloc] init];
-  //[backgroundService emitBackgroundSync];
+  NSLog(@"Background sync triggered from new function!!");
+     [backgroundService emitBackgroundSync];
     // Complete the task with the appropriate result
     [self completeBackgroundTask:task];
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // This method is called when a background fetch is triggered.
-     NSLog(@"Background sync triggered!");
+     NSLog(@"Background sync triggered, from old function!");
     // Add your custom logic here to handle the background fetch.
-
-   BackgroundService *backgroundService = [[BackgroundService alloc] init];
    [backgroundService emitBackgroundSync];
     
-  //Maybe we should call the completionHandler once our background sync completes?
+  //Maybe we should call the completionHandler
     completionHandler(UIBackgroundFetchResultNoData);
 }
 
