@@ -2,6 +2,7 @@
 #import <BackgroundTasks/BackgroundTasks.h>
 #import <React/RCTBundleURLProvider.h>
 #import <UIKit/UIKit.h>
+#import "ReactNativeBridgeIos-Swift.h"
 
 @implementation AppDelegate
 
@@ -12,46 +13,50 @@ static NSString* uploadTask = @"MyLongRunningTask";
   self.moduleName = @"ReactNativeBridgeIos";
   self.initialProps = @{};
 
-  
-  // Add code to configure and schedule processing task if running on iOS 13 or later
-  if (@available(iOS 13.0, *)) {
-    [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:uploadTask usingQueue:nil launchHandler:^(__kindof BGTask *task) {
-            [self handleBackgroundFetchTask:task];
-        }];
-  }
-  
+  // Register your background task
+      if (@available(iOS 13.0, *)) {
+          [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:uploadTask usingQueue:nil launchHandler:^(__kindof BGTask *task) {
+              [self handleBackgroundFetchTask:task];
+          }];
+      }
+
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)handleBackgroundFetchTask:(BGTask *)task {
-    // This method is called when the background fetch task is executed.
+  NSLog(@"Background sync triggered!!");
+ // BackgroundService *backgroundService = [[BackgroundService alloc] init];
+  //[backgroundService emitBackgroundSync];
+    // Complete the task with the appropriate result
+    [self completeBackgroundTask:task];
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    // This method is called when a background fetch is triggered.
      NSLog(@"Background sync triggered!");
     // Add your custom logic here to handle the background fetch.
+
+   BackgroundService *backgroundService = [[BackgroundService alloc] init];
+   [backgroundService emitBackgroundSync];
     
-    // Complete the task with the appropriate result
+  //Maybe we should call the completionHandler once our background sync completes?
+    completionHandler(UIBackgroundFetchResultNoData);
+}
+
+- (void)completeBackgroundTask:(BGTask *)task {
     [task setTaskCompletedWithSuccess:YES];
 }
 
-
-//- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-//    // This method is called when a background fetch is triggered.
-//     NSLog(@"Background sync triggered!");
-//    // Add your custom logic here to handle the background fetch.
-//
-//    // For example, you can post a notification to inform other parts of your app:
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"BackgroundFetchDidOccur" object:nil];
-//
-//    // After handling the background fetch, call the completionHandler with the appropriate result.
-//    // For example, if you successfully fetched new data:
-//    completionHandler(UIBackgroundFetchResultNewData);
-//}
-
-//- (void)applicationDidEnterBackground:(UIApplication *)application {
-//    // This method is called when your app enters the background state.
-//    // You can do additional background-related tasks here if needed.
-//}
-
-
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+  BackgroundService *backgroundService = [[BackgroundService alloc] init];
+  
+  [backgroundService scheduleBackgroundProcessing:uploadTask timeout:@60 resolver:^(id result) {
+      NSLog(@"Background sync scheduled!");
+  } rejecter:^(NSString *code, NSString *message, NSError *error) {
+      // Handle the rejection or error
+      NSLog(@"Background sync schedule failed!");
+  }];
+}
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
